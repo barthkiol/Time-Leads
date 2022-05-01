@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/events"
+        android:enabled="true"
+        android:icon="@drawable/calendar"
+        android:title="Eventos" />
+
+    <item
+        android:id="@+id/hours"
+        android:enabled="true"
+        android:icon="@drawable/very_basic_clock_icon"
+        android:title="Horas" />
+
+    <item
+        android:id="@+id/profile"
+        android:enabled="true"
+        android:icon="@drawable/user_icon"
+        android:title="Perfil" />
+
+    <item
+        android:id="@+id/requests"
+        android:enabled="true"
+        android:icon="@drawable/chat_android"
+        android:title="Chamado" />
+
+
+</menu>
