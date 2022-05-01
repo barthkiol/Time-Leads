@@ -4,15 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.Menu;
 
 
-import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,28 +21,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.GRAY));
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.linearLayout, new Fragment1()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.linearLayout, new Events()).commit();
 
         bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("ResourceType")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment = null;
 
                 switch (item.getItemId()) {
                     case R.id.events:
-                        fragment = new Fragment1();
+                        fragment = new Events();
                         break;
                     case R.id.hours:
-                        fragment = new Fragment2();
+                        fragment = new Hours();
                         break;
                     case R.id.profile:
-                        fragment = new Fragment3();
+                        fragment = new Profile();
                         break;
                     case R.id.requests:
-                        fragment = new Fragment4();
+                        fragment = new Requests();
                         break;
                 }
 
@@ -55,4 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void setActionBarTitle(String title){
+        getSupportActionBar().setTitle(title);
+    }
 }
