@@ -12,6 +12,8 @@ public class StEvents extends AppCompatActivity {
         setContentView(R.layout.activity_st_events);
         //comentario bla bla
 
+        //
+
 
 
 
