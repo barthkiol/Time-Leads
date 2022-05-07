@@ -15,6 +15,8 @@ public class Requests extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup) inflater.inflate(R.layout.requests,container, false);
+
+        ((MainActivity) getActivity()).setActionBarTitle("Chamados");
         return rootview;
     }
 }
