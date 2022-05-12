@@ -1,4 +1,4 @@
-package com.example.timeleads;
+package TimeLeads.example.timeleads;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

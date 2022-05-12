@@ -6,7 +6,8 @@
     android:layout_height="fill_parent"
     android:layout_marginBottom="76dp"
     android:backgroundTint="#9E8DFFEF"
-    android:foregroundTint="#9E8DFFEF">
+    android:foregroundTint="#9E8DFFEF"
+    tools:context="TimeLeads.example.timeleads.Hours">
 
 <LinearLayout
     android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.example.timeleads;
+package TimeLeads.example.timeleads;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+
+import com.example.timeleads.R;
 
 public class Events extends Fragment {
 

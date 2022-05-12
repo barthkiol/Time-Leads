@@ -1,4 +1,4 @@
-package com.example.timeleads;
+package TimeLeads.example.timeleads;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,14 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class Profile extends Fragment {
+import com.example.timeleads.R;
+
+public class Requests extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup rootview = (ViewGroup) inflater.inflate(R.layout.profile,container, false);
+        ViewGroup rootview = (ViewGroup) inflater.inflate(R.layout.requests,container, false);
 
-        ((MainActivity) getActivity()).setActionBarTitle("Perfil");
+        ((MainActivity) getActivity()).setActionBarTitle("Chamados");
         return rootview;
     }
 }
