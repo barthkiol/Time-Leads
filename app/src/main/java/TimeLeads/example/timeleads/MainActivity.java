@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -12,7 +13,10 @@ import android.os.Bundle;
 import com.example.timeleads.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+import TimeLeads.model.EventModel;
+import TimeLeads.repository.EventRepository;
+
+public class MainActivity extends AppCompatActivity implements Events.Listener {
 
     BottomNavigationView bottomNav;
     private ViewPager viewPager;
@@ -23,11 +27,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.GRAY));
 
-        //getSupportFragmentManager().beginTransaction().replace(R.id.linearLayout, new Events()).commit();
+
+        //getSupportFragmentManager().beginTransaction().replace(R.id.lista_eventos, new Events()).commit();
 
         bottomNav = findViewById(R.id.bottom_navigation);
         viewPager = findViewById(R.id.view_pager);
-        setUpViewPager();
+        //setUpViewPager();
         bottomNav.setOnNavigationItemSelectedListener((item) ->{
                 switch (item.getItemId()){
                     case R.id.events:
@@ -67,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                     switch (position){
                         case 0:
+                            //criarEvento();
                             bottomNav.getMenu().findItem(R.id.events).setChecked(true);
                             break;
                         case 1:
@@ -86,5 +92,23 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void itemClicked(int id) {
+        Intent i = new Intent(this, EventActivity.class);
+        i.putExtra("EVENTO_ID", id);
+        //startActivity(i);
+    }
+
+    protected void criarEvento(){
+        EventModel eventModel = new EventModel();
+        eventModel.setData("10-02-2022");
+        eventModel.setDescricao("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras semper eu sapien eu semper. Ut ultrices, nisi quis rutrum euismod, sapien urna commodo mauris, at lacinia quam ligula sit amet ex.");
+        eventModel.setTitulo("Lorem ipsum");
+        eventModel.setHoras_validas("2");
+        EventRepository repo = new EventRepository(this);
+        repo.salvar(eventModel);
+
     }
 }

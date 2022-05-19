@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TimeLeads">
+        <activity
+            android:name="TimeLeads.example.timeleads.EventActivity"
+            android:exported="false" />
         <activity android:name="TimeLeads.example.timeleads.MainActivity" />
         <activity
             android:name="TimeLeads.example.timeleads.SplashActivity"

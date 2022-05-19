@@ -1,35 +1,35 @@
 package TimeLeads.uteis;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-
-import androidx.fragment.app.Fragment;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.timeleads.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import TimeLeads.example.timeleads.Events;
 import TimeLeads.model.EventModel;
 import TimeLeads.repository.EventRepository;
 
-public class LinhaConsultarAdapter extends BaseAdapter {
+public class LinhaConsultarAdapter extends ArrayAdapter<EventModel> {
 
+    private Context context;
     private static LayoutInflater layoutInflater = null;
     private Events lista;
-    List<EventModel> eventModels = new ArrayList<>();
+    private List<EventModel> eventModels = null;
 
     EventRepository eventRepository;
 
-    public LinhaConsultarAdapter(Events lista, List<EventModel> eventModels){
+    public LinhaConsultarAdapter(Context context, List<EventModel> eventModels){
+        super(context, 0, eventModels);
         this.eventModels = eventModels;
-        this.lista = lista;
-        layoutInflater = (LayoutInflater) this.lista.getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.eventRepository = new EventRepository(lista.getContext());
+        this.context = context;
     }
 
     public void AtualizarLista(){
@@ -44,7 +44,7 @@ public class LinhaConsultarAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
+    public EventModel getItem(int i) {
         return null;
     }
 
@@ -54,12 +54,23 @@ public class LinhaConsultarAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        final View viewLinhaLista =layoutInflater.inflate(R.layout.activity_linha_consultar_eventos, null);
+    public View getView(final int position, View view, ViewGroup viewGroup) {
+        EventModel evento = eventModels.get(position);
+
+        if(view == null)
+            view = LayoutInflater.from(context).inflate(R.layout.activity_linha_consultar_eventos, null);
+
+        ImageView imageView = (ImageView) view.findViewById(R.id.img1);
+        TextView textViewTitulo = (TextView) view.findViewById(R.id.title);
+        TextView textViewData = (TextView) view.findViewById(R.id.data);
+        TextView textViewDescricao = (TextView) view.findViewById(R.id.descLong1);
+
+        imageView.setImageDrawable(Drawable.createFromPath(evento.getImagem()));
+        textViewTitulo.setText(evento.getTitulo());
+        textViewData.setText(evento.getData());
+        textViewDescricao.setText(evento.getDescricao());
 
 
-
-
-        return viewLinhaLista;
+        return view;
     }
 }

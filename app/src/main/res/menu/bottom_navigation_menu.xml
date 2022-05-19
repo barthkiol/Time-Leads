@@ -23,7 +23,7 @@
         android:id="@+id/requests"
         android:enabled="true"
         android:icon="@drawable/chat_android"
-        android:title="Chamado" />
+        android:title="Chamados" />
 
 
 </menu>

@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class DataBaseUtil extends SQLiteOpenHelper {
 
-    private static final String NOME_BASE_DE_DADOS = "TIMELEADSHLG.dB";
+    private static final String NOME_BASE_DE_DADOS = "TIMELEADS_HLG.dB";
 
     private static final int VERSAO_BASE_DE_DADOS = 1;
 
@@ -24,7 +24,7 @@ public class DataBaseUtil extends SQLiteOpenHelper {
         stringBuilderCreateTable.append("descricao Text not null, ");
         stringBuilderCreateTable.append("horas_validas Text not null, ");
         stringBuilderCreateTable.append("data  Text not null, ");
-        stringBuilderCreateTable.append("imagem BLOB not null)");
+        stringBuilderCreateTable.append("imagem BLOB null)");
 
         db.execSQL(stringBuilderCreateTable.toString());
 

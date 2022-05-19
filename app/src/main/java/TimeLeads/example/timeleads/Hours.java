@@ -19,12 +19,14 @@ public class Hours extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup rootview = (ViewGroup) inflater.inflate(R.layout.hours,container, false);
-        ((MainActivity) getActivity()).setActionBarTitle("Horas complementares");
-        TextView txtProgress = (TextView) rootview.findViewById(R.id.txtProgress);
+        View rootview = inflater.inflate(R.layout.hours,container, false);
+
+        /*TextView txtProgress = (TextView) rootview.findViewById(R.id.txtProgress);
         progressBar = (ProgressBar) rootview.findViewById(R.id.progressBar);
         progressBar.setProgress(50);
         txtProgress.setText("Ola Gabriel, você complementou " + progressBar.getProgress() + "% das suas horas complementares!");
+        */
         return rootview;
+
     }
 }

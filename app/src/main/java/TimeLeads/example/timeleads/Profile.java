@@ -16,9 +16,7 @@ public class Profile extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup rootview = (ViewGroup) inflater.inflate(R.layout.profile,container, false);
-
-        ((MainActivity) getActivity()).setActionBarTitle("Perfil");
+        View rootview =  inflater.inflate(R.layout.profile,container, false);
         return rootview;
     }
 }

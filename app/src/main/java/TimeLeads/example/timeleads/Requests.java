@@ -13,12 +13,11 @@ import com.example.timeleads.R;
 
 public class Requests extends Fragment {
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup rootview = (ViewGroup) inflater.inflate(R.layout.requests,container, false);
-
-        ((MainActivity) getActivity()).setActionBarTitle("Chamados");
+        View rootview =  inflater.inflate(R.layout.requests,container, false);
         return rootview;
     }
 }

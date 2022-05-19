@@ -25,9 +25,7 @@ public class ViewPagerAdpater extends FragmentStatePagerAdapter {
                 return new Requests();
             default:
                 return new Events();
-
         }
-
     }
 
     @Override

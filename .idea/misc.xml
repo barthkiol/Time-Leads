@@ -3,14 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Aptek/AndroidStudioProjects/Time-Leads/app/src/main/res/layout/activity_linha_consultar_eventos.xml" value="0.20425724637681159" />
-        <entry key="..\:/Users/Aptek/AndroidStudioProjects/Time-Leads/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/Aptek/AndroidStudioProjects/Time-Leads/app/src/main/res/layout/activity_splash.xml" value="0.17028985507246377" />
-        <entry key="..\:/Users/Aptek/AndroidStudioProjects/Time-Leads/app/src/main/res/layout/events.xml" value="0.1" />
-        <entry key="..\:/Users/Aptek/AndroidStudioProjects/Time-Leads/app/src/main/res/layout/hours.xml" value="0.1" />
-        <entry key="..\:/Users/Aptek/AndroidStudioProjects/Time-Leads/app/src/main/res/layout/profile.xml" value="0.1" />
-        <entry key="..\:/Users/Aptek/AndroidStudioProjects/Time-Leads/app/src/main/res/layout/requests.xml" value="0.1" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/drawable/clock.xml" value="0.1" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/activity_event.xml" value="0.25" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/activity_linha_consultar_eventos.xml" value="0.22" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/activity_main.xml" value="0.13" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/activity_splash.xml" value="0.18" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/activity_st_events.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/events.xml" value="0.22" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/fragment1.xml" value="0.18" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/fragment2.xml" value="0.22" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/fragment3.xml" value="0.14895833333333333" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/fragment4.xml" value="0.14895833333333333" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/fragment_event.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/fragment_event_list.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/hours.xml" value="0.1" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/profile.xml" value="0.1" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/requests.xml" value="0.22" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2" />
+        <entry key="..\:/Users/gabri/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/activity_list_item.xml" value="0.14583333333333334" />
+        <entry key="..\:/Users/gabri/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_1.xml" value="0.18072916666666666" />
       </map>
     </option>
   </component>
