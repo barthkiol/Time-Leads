@@ -5,14 +5,15 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_marginBottom="76dp"
-    android:backgroundTint="#9E8DFFEF"
-    android:foregroundTint="#9E8DFFEF"
+    android:backgroundTint="#FFFFFF"
+    android:background="#FFFFFF"
     tools:context="TimeLeads.example.timeleads.Hours">
 
 <LinearLayout
     android:layout_width="match_parent"
     android:gravity="center"
-
+    android:backgroundTint="#FFFFFF"
+    android:background="#FFFFFF"
     android:orientation="vertical"
     android:layout_height="match_parent">
 
@@ -38,102 +39,15 @@
         app:indicatorColor="#11ECD1"
         app:trackColor="@color/white" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card"
+    <ListView
+        android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-
-        android:backgroundTint="@color/white"
-        app:rippleColor="#FFFFFF"
-        app:strokeWidth="0dp"
-        tools:ignore="DuplicateIds">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- Media -->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <!-- Title, secondary and supporting text -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Curso Alura"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textColor="#000000" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="20 Horas complementares"
-
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="#000000" />
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-
-        android:backgroundTint="@color/white"
-        app:rippleColor="#FFFFFF"
-        app:strokeWidth="0dp"
-        tools:ignore="DuplicateIds">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- Media -->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <!-- Title, secondary and supporting text -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Curso Alura"
-                    android:textColor="#000000"
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="20 Horas complementares"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="#000000" />
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
+        android:layout_height="match_parent"
+        android:layout_marginTop="2dp"
+        android:divider="@color/black"
+        android:dividerHeight="2px"
+        android:outlineAmbientShadowColor="@color/black"
+        tools:listitem="@layout/eventitem" />
 
 
 </LinearLayout>

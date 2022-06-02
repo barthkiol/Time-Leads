@@ -24,15 +24,17 @@ public class MainActivity extends AppCompatActivity implements Events.Listener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        int id = (int) getIntent().getIntExtra("ALUNO_ID", 0);
+
         setContentView(R.layout.activity_main);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.GRAY));
-
-
-        //getSupportFragmentManager().beginTransaction().replace(R.id.lista_eventos, new Events()).commit();
-
+        /*Events fragEvents = new Events();
+        getSupportFragmentManager().beginTransaction().replace(R.id.events, new Events()).commit();
+*/
         bottomNav = findViewById(R.id.bottom_navigation);
         viewPager = findViewById(R.id.view_pager);
-        //setUpViewPager();
+        setUpViewPager();
         bottomNav.setOnNavigationItemSelectedListener((item) ->{
                 switch (item.getItemId()){
                     case R.id.events:

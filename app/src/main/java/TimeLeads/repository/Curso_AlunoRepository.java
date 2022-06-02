@@ -60,14 +60,14 @@ public class Curso_AlunoRepository {
     }
 
     public Integer excluir(int codigo){
-        return databaseUtil.GetConexaoDataBase().delete("CURSO", "id_curso = ?",
+        return databaseUtil.GetConexaoDataBase().delete("CURSO", "id_curso_aluno = ?",
                 new String[]{Integer.toString(codigo)});
     }
 
     @SuppressLint("Range")
     public Curso_AlunoModel GetCurso_Aluno(int num){
         Cursor cursor = databaseUtil.GetConexaoDataBase().rawQuery(
-                "select * from CURSO where id_curso = " + num, null);
+                "select * from CURSO_ALUNO where id_curso_aluno = " + num, null);
         cursor.moveToFirst();
         Curso_AlunoModel cursoModel = new Curso_AlunoModel();
         cursoModel.setId(cursor.getInt(cursor.getColumnIndex("id_curso_aluno")));
@@ -77,6 +77,18 @@ public class Curso_AlunoRepository {
         cursoModel.setAluno_id(cursor.getInt(cursor.getColumnIndex("aluno_id")));
         cursoModel.setCurso_id(cursor.getInt(cursor.getColumnIndex("curso_id")));
         return cursoModel;
+    }
+
+    @SuppressLint("Range")
+    public String GetHorasCursoAluno(int num){
+        Cursor cursor = databaseUtil.GetConexaoDataBase().rawQuery(
+                "select horas_neces from CURSO inner join CURSO_ALUNO on CURSO.id_curso = CURSO_ALUNO.curso_id where CURSO_ALUNO.aluno_id = " + num, null);
+        if (cursor.moveToFirst()){
+            String horasCurso = cursor.getString(cursor.getColumnIndex("horas_neces"));
+            return horasCurso;
+        }
+
+        return null;
     }
 
     public void editar(Curso_AlunoModel cursoModel){
@@ -89,7 +101,7 @@ public class Curso_AlunoRepository {
         contentValues.put("curso_id", cursoModel.getCurso_id());
 
 
-        databaseUtil.GetConexaoDataBase().update("CURSO", contentValues, "id_curso = ?",
+        databaseUtil.GetConexaoDataBase().update("CURSO", contentValues, "id_curso_aluno = ?",
                 new String[]{Integer.toString(cursoModel.getId())});
     }
 }

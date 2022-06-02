@@ -3,22 +3,25 @@ package TimeLeads.model;
 public class ChamadoModel {
 
     private Integer id;
+    private String titulo;
     private String data_envio;
     private String arquivo;
     private String descricao;
     private String status;
     private Integer aluno_id;
 
+
     public ChamadoModel() {
     }
 
-    public ChamadoModel(Integer id, String data_envio, String arquivo, String descricao, String status, Integer aluno_id) {
+    public ChamadoModel(Integer id, String data_envio, String arquivo, String descricao, String status, Integer aluno_id, String titulo) {
         this.id = id;
         this.data_envio = data_envio;
         this.arquivo = arquivo;
         this.descricao = descricao;
         this.status = status;
         this.aluno_id = aluno_id;
+        this.titulo = titulo;
     }
 
     public Integer getId() {
@@ -67,5 +70,13 @@ public class ChamadoModel {
 
     public void setAluno_id(Integer aluno_id) {
         this.aluno_id = aluno_id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 }

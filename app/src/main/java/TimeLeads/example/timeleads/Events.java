@@ -8,35 +8,30 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.ContentView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.ListFragment;
 
 import com.example.timeleads.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import org.w3c.dom.Text;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import TimeLeads.model.EventModel;
 import TimeLeads.repository.EventRepository;
-import TimeLeads.uteis.LinhaConsultarAdapter;
 
 public class Events extends Fragment {
 
     ListView lv;
     SearchView searchView;
+    View rootview;
     ArrayAdapter<String> adapter;
+    FloatingActionButton fab;
 
     static interface Listener{
         void itemClicked(int id);
@@ -55,19 +50,40 @@ public class Events extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootview =  inflater.inflate(R.layout.events,container, false);
+        rootview =  inflater.inflate(R.layout.events,container, false);
+
+        int idAlunoLogado = (int) getActivity().getIntent().getIntExtra("ALUNO_ID", 0);
+        fab = rootview.findViewById(R.id.fab);
+        if(idAlunoLogado != 0){
+            fab.setVisibility(View.GONE);
+        }
+
         EventRepository eventRepository = new EventRepository(((MainActivity) getContext()));
         List<EventModel> eventos = eventRepository.ListarEventos();
         int l = eventos.size();
-        String [] nomes = new String[l];
+        String [] titulos = new String[l];
+        String [] data = new String[l];
+        int imageId = R.drawable.calendar;
         ids =  new Integer[l];
+        ArrayList<EventModel> eventModelArrayList = new ArrayList<>();
         for(int i=0;i<l;i++){
             ids [i] = eventos.get(i).getId();
-            nomes[i] = eventos.get(i).getTitulo();
+            titulos[i] = eventos.get(i).getTitulo();
+            data[i] = eventos.get(i).getData();
+            EventModel event = new EventModel();
+            event.setImagem(String.valueOf(imageId));
+            event.setTitulo(eventos.get(i).getTitulo());
+            event.setData(eventos.get(i).getData());
+            event.setHoras_validas(eventos.get(i).getHoras_validas());
+            event.setDescricao(eventos.get(i).getDescricao());
+            event.setId(eventos.get(i).getId());
+            eventModelArrayList.add(event);
         }
         String[] nomes2 = {"A", "B", "C"};
-        lv = (ListView) rootview.findViewById(R.id.listView);
-        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, nomes);
+
+        //EventAdapter listAdapter = new EventAdapter((MainActivity) getContext(), eventModelArrayList);
+        lv =  rootview.findViewById(R.id.listView);
+        adapter = new ArrayAdapter<String>(getActivity(), R.layout.eventitem, R.id.text_view, titulos);
         lv.setAdapter(adapter);
 
 

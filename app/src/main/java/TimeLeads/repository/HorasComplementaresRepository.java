@@ -54,6 +54,29 @@ public class HorasComplementaresRepository {
         return horasComplementares;
     }
 
+    @SuppressLint("Range")
+    public List<HorasComplementaresModel> ListarHorasComplementaresAluno(int num){
+
+        ArrayList horasComplementares = new ArrayList();
+        StringBuilder stringBuilderListHorasComplementares = new StringBuilder();
+        stringBuilderListHorasComplementares.append("Select * from HORAS_COMPLEMENTARES where aluno_id = " + num);
+        stringBuilderListHorasComplementares.append(" order by id_hora");
+
+        Cursor cursor = databaseUtil.GetConexaoDataBase().rawQuery(stringBuilderListHorasComplementares.toString(), null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            HorasComplementaresModel horasComplementaresModel = new HorasComplementaresModel();
+            horasComplementaresModel.setId(cursor.getInt(cursor.getColumnIndex("id_hora")));
+            horasComplementaresModel.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+            horasComplementaresModel.setHoras(cursor.getString(cursor.getColumnIndex("horas")));
+            horasComplementaresModel.setAluno_id(cursor.getInt(cursor.getColumnIndex("aluno_id")));
+
+            horasComplementares.add(horasComplementaresModel);
+            cursor.moveToNext();
+        }
+        return horasComplementares;
+    }
+
     public Integer excluir(int codigo){
         return databaseUtil.GetConexaoDataBase().delete("HORAS_COMPLEMENTARES", "id_horasComplementares = ?",
                 new String[]{Integer.toString(codigo)});
@@ -70,6 +93,17 @@ public class HorasComplementaresRepository {
         horasComplementaresModel.setHoras(cursor.getString(cursor.getColumnIndex("horas")));
         horasComplementaresModel.setAluno_id(cursor.getInt(cursor.getColumnIndex("id_aluno")));
         return horasComplementaresModel;
+    }
+
+    @SuppressLint("Range")
+    public String GetTotalHorasComplementaresAluno(int num){
+        Cursor cursor = databaseUtil.GetConexaoDataBase().rawQuery(
+                "select SUM(horas) as SOMA from HORAS_COMPLEMENTARES where aluno_id = " + num, null);
+        if (cursor.moveToFirst()){
+            String soma = cursor.getString(cursor.getColumnIndex("SOMA"));
+            return soma;
+        }
+        return null;
     }
 
     public void editar(HorasComplementaresModel horasComplementares){

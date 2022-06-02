@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:backgroundTint="#FFFFFF"
+    tools:context="TimeLeads.example.timeleads.CriarChamado"
+    tools:ignore="MissingDefaultResource">
+
+    <EditText
+        android:id="@+id/requestTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:hint="Titulo do chamado"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="25dp"
+        />
+
+    <EditText
+        android:id="@+id/requestDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginBottom="25dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:hint="Descrição do chamado"
+        android:layout_marginTop="10dp"
+        />
+
+    <Button
+        android:id="@+id/btnAnexar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anexar"
+        android:backgroundTint="#0CDDD7"
+        android:layout_gravity="right"/>
+
+    <ImageView
+        android:id="@+id/requestArquivo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        app:backgroundTint="#00FF1A"
+        app:fabSize="normal"
+        android:enabled="false"
+        app:srcCompat="@android:drawable/ic_input_add"
+        ></com.google.android.material.floatingactionbutton.FloatingActionButton>
+</LinearLayout>

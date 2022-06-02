@@ -29,7 +29,7 @@ public class AlunoRepository {
         contentValues.put("email", alunoModel.getEmail());
         contentValues.put("senha", alunoModel.getSenha());
         contentValues.put("foto", alunoModel.getFoto());
-        contentValues.put("matriucla", alunoModel.getMatricula());
+        contentValues.put("matricula", alunoModel.getMatricula());
 
         databaseUtil.GetConexaoDataBase().insert("ALUNO", null, contentValues);
 
@@ -84,6 +84,29 @@ public class AlunoRepository {
         alunoModel.setMatricula(cursor.getString(cursor.getColumnIndex("matricula")));;
 
         return alunoModel;
+    }
+
+
+    @SuppressLint("Range")
+    public AlunoModel GetAlunoLogin(String email, String senha){
+        Cursor cursor = databaseUtil.GetConexaoDataBase().rawQuery(
+                "select * from ALUNO where email = '" + email + "' and senha = '" + senha + "' ", null);
+        cursor.moveToFirst();
+        if(cursor.moveToFirst() == true) {
+            AlunoModel alunoModel = new AlunoModel();
+            alunoModel.setId(cursor.getInt(cursor.getColumnIndex("id_aluno")));
+            alunoModel.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+            alunoModel.setData_nasc(cursor.getString(cursor.getColumnIndex("data_nasc")));
+            alunoModel.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+            alunoModel.setCPF(cursor.getString(cursor.getColumnIndex("cpf")));
+            alunoModel.setSenha(cursor.getString(cursor.getColumnIndex("senha")));
+            alunoModel.setFoto(cursor.getString(cursor.getColumnIndex("foto")));
+            alunoModel.setMatricula(cursor.getString(cursor.getColumnIndex("matricula")));
+            return alunoModel;
+        }else{
+            return null;
+        }
+
     }
 
     public void editar(AlunoModel aluno){

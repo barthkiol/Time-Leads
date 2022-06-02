@@ -23,6 +23,7 @@ public class ChamadoRepository {
     //insert
     public void salvar(ChamadoModel chamadoModel){
         ContentValues contentValues = new ContentValues();
+        contentValues.put("titulo", chamadoModel.getTitulo());
         contentValues.put("descricao", chamadoModel.getDescricao());
         contentValues.put("data_envio", chamadoModel.getData_envio());
         contentValues.put("arquivo", chamadoModel.getArquivo());
@@ -48,6 +49,35 @@ public class ChamadoRepository {
         while(!cursor.isAfterLast()){
             ChamadoModel chamadoModel = new ChamadoModel();
             chamadoModel.setId(cursor.getInt(cursor.getColumnIndex("id_chamado")));
+            chamadoModel.setTitulo(cursor.getString(cursor.getColumnIndex("titulo")));
+            chamadoModel.setDescricao(cursor.getString(cursor.getColumnIndex("descricao")));
+            chamadoModel.setData_envio(cursor.getString(cursor.getColumnIndex("data_envio")));
+            chamadoModel.setArquivo(cursor.getString(cursor.getColumnIndex("arquivo")));
+            chamadoModel.setAluno_id(cursor.getInt(cursor.getColumnIndex("aluno_id")));
+            chamadoModel.setStatus(cursor.getString(cursor.getColumnIndex("status")));
+
+            chamados.add(chamadoModel);
+            cursor.moveToNext();
+        }
+        return chamados;
+    }
+
+
+
+    @SuppressLint("Range")
+    public List<ChamadoModel> ListarChamadosAluno(int aluno){
+
+        ArrayList chamados = new ArrayList();
+        StringBuilder stringBuilderListChamado = new StringBuilder();
+        stringBuilderListChamado.append("Select * from CHAMADO where aluno_id = " + aluno);
+        stringBuilderListChamado.append(" order by id_chamado");
+
+        Cursor cursor = databaseUtil.GetConexaoDataBase().rawQuery(stringBuilderListChamado.toString(), null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            ChamadoModel chamadoModel = new ChamadoModel();
+            chamadoModel.setId(cursor.getInt(cursor.getColumnIndex("id_chamado")));
+            chamadoModel.setTitulo(cursor.getString(cursor.getColumnIndex("titulo")));
             chamadoModel.setDescricao(cursor.getString(cursor.getColumnIndex("descricao")));
             chamadoModel.setData_envio(cursor.getString(cursor.getColumnIndex("data_envio")));
             chamadoModel.setArquivo(cursor.getString(cursor.getColumnIndex("arquivo")));
@@ -72,6 +102,7 @@ public class ChamadoRepository {
         cursor.moveToFirst();
         ChamadoModel chamadoModel = new ChamadoModel();
         chamadoModel.setId(cursor.getInt(cursor.getColumnIndex("id_chamado")));
+        chamadoModel.setTitulo(cursor.getString(cursor.getColumnIndex("titulo")));
         chamadoModel.setDescricao(cursor.getString(cursor.getColumnIndex("descricao")));
         chamadoModel.setData_envio(cursor.getString(cursor.getColumnIndex("data_envio")));
         chamadoModel.setArquivo(cursor.getString(cursor.getColumnIndex("arquivo")));
@@ -84,6 +115,7 @@ public class ChamadoRepository {
     public void editar(ChamadoModel chamado){
 
         ContentValues content = new ContentValues();
+        content.put("titulo", chamado.getTitulo());
         content.put("descricao", chamado.getDescricao());
         content.put("data_envio", chamado.getData_envio());
         content.put("arquivo", chamado.getArquivo());
