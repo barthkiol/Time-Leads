@@ -39,14 +39,25 @@
         app:indicatorColor="#11ECD1"
         app:trackColor="@color/white" />
 
+    <TextView
+        android:id="@+id/txtStartEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="2"
+        android:textColor="#000000"
+        android:textSize="20sp">
+
+    </TextView>
+
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="469dp"
         android:layout_marginTop="2dp"
-        android:divider="@color/black"
+        android:divider="@color/white"
         android:dividerHeight="2px"
-        android:outlineAmbientShadowColor="@color/black"
+        android:outlineAmbientShadowColor="@color/white"
         tools:listitem="@layout/eventitem" />
 
 

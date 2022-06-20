@@ -90,6 +90,8 @@ public class CriarChamado extends AppCompatActivity {
 
                 ChamadoRepository repo = new ChamadoRepository(CriarChamado.this);
                 repo.salvar(chamadoModel);
+                Toast.makeText(CriarChamado.this, "Chamado criado com sucesso!", Toast.LENGTH_SHORT).show();
+                finish();
 
             }
         });

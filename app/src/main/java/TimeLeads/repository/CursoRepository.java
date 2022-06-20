@@ -48,7 +48,31 @@ public class CursoRepository {
             CursoModel cursoModel = new CursoModel();
             cursoModel.setId(cursor.getInt(cursor.getColumnIndex("id_curso")));
             cursoModel.setNome(cursor.getString(cursor.getColumnIndex("nome")));
-            cursoModel.setHoras_neces(cursor.getString(cursor.getColumnIndex("horas_nesc")));
+            cursoModel.setHoras_neces(cursor.getString(cursor.getColumnIndex("horas_neces")));
+            cursoModel.setPeriodos(cursor.getString(cursor.getColumnIndex("periodos")));
+            cursoModel.setCoordenador_id(cursor.getInt(cursor.getColumnIndex("coordenador_id")));
+
+            cursos.add(cursoModel);
+            cursor.moveToNext();
+        }
+        return cursos;
+    }
+
+
+    @SuppressLint("Range")
+    public List<CursoModel> ListarCursosCoordenador(int coordenador){
+
+        ArrayList cursos = new ArrayList();
+        StringBuilder stringBuilderListCurso = new StringBuilder();
+        stringBuilderListCurso.append("Select * from CURSO where coordenador_id = " + coordenador);
+
+        Cursor cursor = databaseUtil.GetConexaoDataBase().rawQuery(stringBuilderListCurso.toString(), null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            CursoModel cursoModel = new CursoModel();
+            cursoModel.setId(cursor.getInt(cursor.getColumnIndex("id_curso")));
+            cursoModel.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+            cursoModel.setHoras_neces(cursor.getString(cursor.getColumnIndex("horas_neces")));
             cursoModel.setPeriodos(cursor.getString(cursor.getColumnIndex("periodos")));
             cursoModel.setCoordenador_id(cursor.getInt(cursor.getColumnIndex("coordenador_id")));
 
@@ -71,7 +95,7 @@ public class CursoRepository {
         CursoModel cursoModel = new CursoModel();
         cursoModel.setId(cursor.getInt(cursor.getColumnIndex("id_curso")));
         cursoModel.setNome(cursor.getString(cursor.getColumnIndex("nome")));
-        cursoModel.setHoras_neces(cursor.getString(cursor.getColumnIndex("horas_nesc")));
+        cursoModel.setHoras_neces(cursor.getString(cursor.getColumnIndex("horas_neces")));
         cursoModel.setPeriodos(cursor.getString(cursor.getColumnIndex("periodos")));
         cursoModel.setCoordenador_id(cursor.getInt(cursor.getColumnIndex("coordenador_id")));
 

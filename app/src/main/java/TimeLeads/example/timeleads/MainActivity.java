@@ -29,9 +29,7 @@ public class MainActivity extends AppCompatActivity implements Events.Listener {
 
         setContentView(R.layout.activity_main);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.GRAY));
-        /*Events fragEvents = new Events();
-        getSupportFragmentManager().beginTransaction().replace(R.id.events, new Events()).commit();
-*/
+
         bottomNav = findViewById(R.id.bottom_navigation);
         viewPager = findViewById(R.id.view_pager);
         setUpViewPager();
@@ -56,10 +54,6 @@ public class MainActivity extends AppCompatActivity implements Events.Listener {
 
     }
 
-    public void setActionBarTitle(String title){
-        getSupportActionBar().setTitle(title);
-    }
-
     private void setUpViewPager() {
         ViewPagerAdpater viewPagerAdpater = new ViewPagerAdpater(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPager.setAdapter(viewPagerAdpater);
@@ -74,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements Events.Listener {
             public void onPageSelected(int position) {
                     switch (position){
                         case 0:
-                            //criarEvento();
                             bottomNav.getMenu().findItem(R.id.events).setChecked(true);
                             break;
                         case 1:

@@ -63,6 +63,31 @@ public class ChamadoRepository {
     }
 
 
+    @SuppressLint("Range")
+    public List<ChamadoModel> ListarChamadosAbertos(){
+
+        ArrayList chamados = new ArrayList();
+        StringBuilder stringBuilderListChamado = new StringBuilder();
+        stringBuilderListChamado.append("Select * from CHAMADO where STATUS = 'ABERTO' ");
+        stringBuilderListChamado.append("order by id_chamado");
+
+        Cursor cursor = databaseUtil.GetConexaoDataBase().rawQuery(stringBuilderListChamado.toString(), null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            ChamadoModel chamadoModel = new ChamadoModel();
+            chamadoModel.setId(cursor.getInt(cursor.getColumnIndex("id_chamado")));
+            chamadoModel.setTitulo(cursor.getString(cursor.getColumnIndex("titulo")));
+            chamadoModel.setDescricao(cursor.getString(cursor.getColumnIndex("descricao")));
+            chamadoModel.setData_envio(cursor.getString(cursor.getColumnIndex("data_envio")));
+            chamadoModel.setArquivo(cursor.getString(cursor.getColumnIndex("arquivo")));
+            chamadoModel.setAluno_id(cursor.getInt(cursor.getColumnIndex("aluno_id")));
+            chamadoModel.setStatus(cursor.getString(cursor.getColumnIndex("status")));
+
+            chamados.add(chamadoModel);
+            cursor.moveToNext();
+        }
+        return chamados;
+    }
 
     @SuppressLint("Range")
     public List<ChamadoModel> ListarChamadosAluno(int aluno){
@@ -70,7 +95,7 @@ public class ChamadoRepository {
         ArrayList chamados = new ArrayList();
         StringBuilder stringBuilderListChamado = new StringBuilder();
         stringBuilderListChamado.append("Select * from CHAMADO where aluno_id = " + aluno);
-        stringBuilderListChamado.append(" order by id_chamado");
+        stringBuilderListChamado.append(" AND CHAMADO.status like 'RECUSADO' OR CHAMADO.status like 'ABERTO' order by id_chamado");
 
         Cursor cursor = databaseUtil.GetConexaoDataBase().rawQuery(stringBuilderListChamado.toString(), null);
         cursor.moveToFirst();

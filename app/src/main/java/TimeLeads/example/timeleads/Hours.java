@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import TimeLeads.model.AlunoModel;
+import TimeLeads.model.ChamadoModel;
 import TimeLeads.model.HorasComplementaresModel;
 import TimeLeads.repository.AlunoRepository;
 import TimeLeads.repository.Curso_AlunoRepository;
@@ -42,25 +43,43 @@ public class Hours extends Fragment {
         AlunoModel aluno = alunoRepository.GetAluno(idAlunoLogado);
         HorasComplementaresRepository horasComplementaresRepository = new HorasComplementaresRepository(((MainActivity) getContext()));
         Curso_AlunoRepository curso_alunoRepository = new Curso_AlunoRepository(((MainActivity) getContext()));
-        String totalHoras = horasComplementaresRepository.GetTotalHorasComplementaresAluno(idAlunoLogado);
+        Integer totalHoras = horasComplementaresRepository.GetTotalHorasComplementaresAluno(idAlunoLogado);
         String horasCurso = curso_alunoRepository.GetHorasCursoAluno(idAlunoLogado);
         progressBar = (ProgressBar) rootview.findViewById(R.id.progressBar);
-        progressBar.setProgress(Integer.parseInt(totalHoras));
         progressBar.setMax(Integer.parseInt(horasCurso));
 
+        if(totalHoras > Integer.parseInt(horasCurso)){
+            totalHoras = Integer.parseInt(horasCurso);
+        }
+        if(totalHoras == null || totalHoras == 0){
+            progressBar.setProgress(0);
+        }else{
+            progressBar.setProgress(totalHoras);
+        }
+
         TextView txtProgress = (TextView) rootview.findViewById(R.id.txtProgress);
-        txtProgress.setText("Ola " + aluno.getNome() + " você complementou " + progressBar.getProgress() + " horas complementares no seu curso!");
+        if(totalHoras >= Integer.parseInt(horasCurso)){
+            txtProgress.setText("Parabéns " + aluno.getNome() + ", você complementou todas as horas complementares do seu curso. Ótimo trabalho!");
+
+        }else{
+            txtProgress.setText("Ola " + aluno.getNome() + ", você complementou " + totalHoras + " horas complementares no seu curso!");
+        }
+
+
+        TextView txtNumber = (TextView) rootview.findViewById(R.id.txtStartEnd);
+        txtNumber.setText(progressBar.getProgress() + " / " + progressBar.getMax());
 
 
         List<HorasComplementaresModel> horas = horasComplementaresRepository.ListarHorasComplementaresAluno(idAlunoLogado);
         int l = horas.size();
         String [] horasString = new String[l];
-        ArrayList<HorasComplementaresModel> horasComplementaresModelArrayList = new ArrayList<>();
+
         for (int i=0;i<l;i++){
             horasString[i] = horas.get(i).getNome() + " - " + horas.get(i).getHoras() + " horas";
+
         }
         lv = rootview.findViewById(R.id.listView);
-        adapter = new ArrayAdapter<String>(getActivity(), R.layout.eventitem, R.id.text_view, horasString);
+        adapter = new ArrayAdapter<String>(getActivity(), R.layout.requestitem, R.id.text_view, horasString);
         lv.setAdapter(adapter);
 
         return rootview;

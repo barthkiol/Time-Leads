@@ -63,6 +63,35 @@ public class AlunoRepository {
         return alunos;
     }
 
+
+    @SuppressLint("Range")
+    public List<AlunoModel> ListarAlunosCoordenador(int curso){
+
+        ArrayList alunos = new ArrayList();
+        StringBuilder stringBuilderListAluno = new StringBuilder();
+        stringBuilderListAluno.append("Select ALUNO.id_aluno, ALUNO.nome, ALUNO.cpf, ALUNO.data_nasc, ALUNO.email, ALUNO.foto, ALUNO.matricula, ALUNO.senha from ALUNO INNER JOIN CURSO_ALUNO ON ALUNO.id_aluno = CURSO_ALUNO.aluno_id INNER JOIN CURSO ON CURSO_ALUNO.curso_id = CURSO.id_curso ");
+        stringBuilderListAluno.append(" where CURSO.id_curso = " + curso);
+        stringBuilderListAluno.append(" order by ALUNO.nome");
+
+        Cursor cursor = databaseUtil.GetConexaoDataBase().rawQuery(stringBuilderListAluno.toString(), null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            AlunoModel alunoModel = new AlunoModel();
+            alunoModel.setId(cursor.getInt(cursor.getColumnIndex("id_aluno")));
+            alunoModel.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+            alunoModel.setData_nasc(cursor.getString(cursor.getColumnIndex("data_nasc")));
+            alunoModel.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+            alunoModel.setCPF(cursor.getString(cursor.getColumnIndex("cpf")));
+            alunoModel.setSenha(cursor.getString(cursor.getColumnIndex("senha")));
+            alunoModel.setFoto(cursor.getString(cursor.getColumnIndex("foto")));
+            alunoModel.setMatricula(cursor.getString(cursor.getColumnIndex("matricula")));
+
+            alunos.add(alunoModel);
+            cursor.moveToNext();
+        }
+        return alunos;
+    }
+
     public Integer excluir(int codigo){
         return databaseUtil.GetConexaoDataBase().delete("ALUNO", "id_aluno = ?",
                 new String[]{Integer.toString(codigo)});

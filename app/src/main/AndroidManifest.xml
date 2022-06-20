@@ -12,11 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TimeLeads">
         <activity
+            android:name="TimeLeads.example.timeleads.StudentsActivity"
+            android:exported="false" />
+        <activity
+            android:name="TimeLeads.example.timeleads.MainActivityCoordenador"
+            android:exported="false" />
+
+        <activity
             android:name="TimeLeads.example.timeleads.CriarChamado"
             android:exported="false" />
         <activity
             android:name="TimeLeads.example.timeleads.CriarAluno"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name="TimeLeads.example.timeleads.LoginActivity"
             android:exported="true">
@@ -28,13 +35,13 @@
         </activity>
         <activity
             android:name="TimeLeads.example.timeleads.SalvarEvento"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name="TimeLeads.example.timeleads.RequestActivity"
             android:exported="false" />
         <activity
             android:name="TimeLeads.example.timeleads.EventActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity android:name="TimeLeads.example.timeleads.MainActivity" />
         <activity
             android:name="TimeLeads.example.timeleads.SplashActivity"

@@ -11,10 +11,12 @@
 
     <TextView
         android:id="@+id/txtTituloR"
-        android:layout_width="104dp"
+        android:layout_width="wrap_content"
         android:layout_height="27dp"
         android:gravity="center"
         android:text="Titulo"
+        android:textSize="25dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -27,34 +29,80 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Data"
+        android:textSize="20dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintHorizontal_bias="0.887"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTituloR"
-        app:layout_constraintVertical_bias="0.035" />
+        app:layout_constraintVertical_bias="0.031" />
 
     <TextView
         android:id="@+id/txtDescR"
-        android:layout_width="334dp"
-        android:layout_height="220dp"
+        android:layout_width="338dp"
+        android:layout_height="187dp"
         android:text="Descrição"
+        android:textSize="20dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTituloR"
-        app:layout_constraintVertical_bias="0.198" />
+        app:layout_constraintVertical_bias="0.685" />
 
     <TextView
         android:id="@+id/txtStatusR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Status"
+        android:textSize="20dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTituloR"
+        app:layout_constraintVertical_bias="0.031" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="326dp"
+        android:layout_height="224dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtDescR"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTituloR"
+        app:layout_constraintVertical_bias="0.635"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAccept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:layout_marginEnd="48dp"
+        android:tint="#FFFFFF"
+        app:backgroundTint="#11FF00"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescR"
+        app:srcCompat="@drawable/_5404" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnRefuse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        app:backgroundTint="#FF0000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnAccept"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDescR"
-        app:layout_constraintVertical_bias="0.228" />
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 </androidx.constraintlayout.widget.ConstraintLayout>

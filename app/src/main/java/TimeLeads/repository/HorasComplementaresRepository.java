@@ -96,11 +96,12 @@ public class HorasComplementaresRepository {
     }
 
     @SuppressLint("Range")
-    public String GetTotalHorasComplementaresAluno(int num){
+    public Integer GetTotalHorasComplementaresAluno(int num){
         Cursor cursor = databaseUtil.GetConexaoDataBase().rawQuery(
                 "select SUM(horas) as SOMA from HORAS_COMPLEMENTARES where aluno_id = " + num, null);
         if (cursor.moveToFirst()){
-            String soma = cursor.getString(cursor.getColumnIndex("SOMA"));
+            Double somad = cursor.getDouble(cursor.getColumnIndex("SOMA"));
+            Integer soma = somad.intValue();
             return soma;
         }
         return null;

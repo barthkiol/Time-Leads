@@ -14,7 +14,9 @@ import android.widget.Toast;
 import com.example.timeleads.R;
 
 import TimeLeads.model.AlunoModel;
+import TimeLeads.model.CoordenadorModel;
 import TimeLeads.repository.AlunoRepository;
+import TimeLeads.repository.CoordenadorRepository;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -39,15 +41,22 @@ public class LoginActivity extends AppCompatActivity {
                 passwordString = password.getText().toString();
                 AlunoRepository alunoRepository = new AlunoRepository(getApplicationContext());
                 AlunoModel alunoLogin = alunoRepository.GetAlunoLogin(emailString, passwordString);
-                if(alunoLogin == null){
-                    Toast.makeText(LoginActivity.this, "Email e/ou senha errados!", Toast.LENGTH_SHORT).show();
-                    password.clearComposingText();
-                }
-                else{
+                CoordenadorRepository coordenadorRepository = new CoordenadorRepository(getApplicationContext());
+                CoordenadorModel coordenadorLogin = coordenadorRepository.GetCoordenadorLogin(emailString, passwordString);
+                if(alunoLogin != null){
                     Intent intent = new Intent(getBaseContext(), MainActivity.class);
                     intent.putExtra("ALUNO_ID", alunoLogin.getId());
                     startActivity(intent);
                     finish();
+                }
+                else if (coordenadorLogin != null){
+                    Intent intent = new Intent(getBaseContext(), MainActivityCoordenador.class);
+                    intent.putExtra("COORDENADOR_ID", coordenadorLogin.getId());
+                    startActivity(intent);
+                    finish();
+                } else{
+                    Toast.makeText(LoginActivity.this, "Email e/ou senha errados!", Toast.LENGTH_SHORT).show();
+                    password.clearComposingText();
                 }
             }
         });

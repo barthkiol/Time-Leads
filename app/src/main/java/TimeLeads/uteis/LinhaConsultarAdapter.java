@@ -1,76 +1,83 @@
 package TimeLeads.uteis;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.timeleads.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import TimeLeads.example.timeleads.Events;
-import TimeLeads.model.EventModel;
-import TimeLeads.repository.EventRepository;
+import TimeLeads.example.timeleads.MainActivity;
+import TimeLeads.example.timeleads.StudentsActivity;
+import TimeLeads.model.AlunoModel;
+import TimeLeads.repository.AlunoRepository;
+import TimeLeads.repository.HorasComplementaresRepository;
 
-public class LinhaConsultarAdapter extends ArrayAdapter<EventModel> {
+public class LinhaConsultarAdapter extends BaseAdapter {
 
-    private Context context;
     private static LayoutInflater layoutInflater = null;
-    private Events lista;
-    private List<EventModel> eventModels = null;
+    private StudentsActivity lista;
+    private List<AlunoModel> alunoModels = new ArrayList();
 
-    EventRepository eventRepository;
 
-    public LinhaConsultarAdapter(Context context, List<EventModel> eventModels){
-        super(context, 0, eventModels);
-        this.eventModels = eventModels;
-        this.context = context;
+    AlunoRepository alunoRepository;
+
+    public LinhaConsultarAdapter(StudentsActivity lista, List<AlunoModel> alunoModels){
+        this.lista = lista;
+        this.alunoModels = alunoModels;
+        layoutInflater = (LayoutInflater) this.lista.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.alunoRepository = new AlunoRepository(lista);
     }
 
-    public void AtualizarLista(){
-        this.eventModels.clear();
-        this.eventModels = eventRepository.ListarEventos();
-        this.notifyDataSetChanged();
+
+    @Override
+    public int getCount(){
+        return alunoModels.size();
     }
 
     @Override
-    public int getCount() {
-        return 0;
+    public Object getItem (int position){
+        return position;
     }
 
     @Override
-    public EventModel getItem(int i) {
-        return null;
+    public long getItemId (int position){
+        return position;
     }
 
     @Override
-    public long getItemId(int i) {
-        return 0;
-    }
+    public View getView(final int position, View convertView, ViewGroup viewGroup) {
 
-    @Override
-    public View getView(final int position, View view, ViewGroup viewGroup) {
-        EventModel evento = eventModels.get(position);
+        final View viewLinhaLista = layoutInflater.inflate(R.layout.activity_linha_consultar_eventos, null);
+        TextView textViewTitulo = (TextView) viewLinhaLista.findViewById(R.id.nomeAlunoList);
+        TextView textViewHoras = (TextView) viewLinhaLista.findViewById(R.id.horasAlunoList);
 
-        if(view == null)
-            view = LayoutInflater.from(context).inflate(R.layout.activity_linha_consultar_eventos, null);
+        AlunoModel aluno = alunoModels.get(position);
+        int idAluno = aluno.getId();
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.img1);
-        TextView textViewTitulo = (TextView) view.findViewById(R.id.title);
-        TextView textViewData = (TextView) view.findViewById(R.id.data);
-        TextView textViewDescricao = (TextView) view.findViewById(R.id.descLong1);
-
-        imageView.setImageDrawable(Drawable.createFromPath(evento.getImagem()));
-        textViewTitulo.setText(evento.getTitulo());
-        textViewData.setText(evento.getData());
-        textViewDescricao.setText(evento.getDescricao());
+        HorasComplementaresRepository horasComplementaresRepository = new HorasComplementaresRepository(lista);
+        Integer alunoHoras = horasComplementaresRepository.GetTotalHorasComplementaresAluno(idAluno);
 
 
-        return view;
+
+        textViewTitulo.setText(aluno.getNome());
+        if(alunoHoras == null){
+            alunoHoras = 0;
+        }else if(alunoHoras > 150){
+            alunoHoras = 150;
+        }
+        textViewHoras.setText(alunoHoras + " Horas");
+
+
+        return viewLinhaLista;
     }
 }

@@ -8,6 +8,7 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
+import TimeLeads.model.AlunoModel;
 import TimeLeads.model.CoordenadorModel;
 import TimeLeads.uteis.DataBaseUtil;
 
@@ -58,6 +59,25 @@ public class CoordenadorRepository {
     public Integer excluir(int codigo){
         return databaseUtil.GetConexaoDataBase().delete("COORDENADOR", "id_coordenador = ?",
                 new String[]{Integer.toString(codigo)});
+    }
+
+    @SuppressLint("Range")
+    public CoordenadorModel GetCoordenadorLogin(String email, String senha){
+        Cursor cursor = databaseUtil.GetConexaoDataBase().rawQuery(
+                "select * from COORDENADOR where email = '" + email + "' and senha = '" + senha + "' ", null);
+        cursor.moveToFirst();
+        if(cursor.moveToFirst() == true) {
+            CoordenadorModel coordenadorModel = new CoordenadorModel();
+            coordenadorModel.setId(cursor.getInt(cursor.getColumnIndex("id_coordenador")));
+            coordenadorModel.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+            coordenadorModel.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+            coordenadorModel.setSenha(cursor.getString(cursor.getColumnIndex("senha")));
+            coordenadorModel.setCpf(cursor.getString(cursor.getColumnIndex("cpf")));
+            return coordenadorModel;
+        }else{
+            return null;
+        }
+
     }
 
     @SuppressLint("Range")

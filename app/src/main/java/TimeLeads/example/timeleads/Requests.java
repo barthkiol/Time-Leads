@@ -23,10 +23,13 @@ import java.util.List;
 
 import TimeLeads.model.ChamadoModel;
 import TimeLeads.repository.ChamadoRepository;
+import TimeLeads.repository.Curso_AlunoRepository;
+import TimeLeads.repository.HorasComplementaresRepository;
 
 public class Requests extends Fragment {
 
     ListView lv;
+
     View rootview;
     ArrayAdapter<String> adapter;
     static interface Listener{
@@ -48,11 +51,26 @@ public class Requests extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootview =  inflater.inflate(R.layout.events,container, false);
+        rootview =  inflater.inflate(R.layout.requests,container, false);
         ChamadoRepository chamadoRepository = new ChamadoRepository(((MainActivity) getContext()));
         int alunoId = (int) getActivity().getIntent().getIntExtra("ALUNO_ID", 0);
         fab = rootview.findViewById(R.id.fab);
 
+        Curso_AlunoRepository curso_alunoRepository = new Curso_AlunoRepository((MainActivity) getContext());
+        HorasComplementaresRepository horasComplementaresRepository = new HorasComplementaresRepository(((MainActivity) getContext()));
+        Integer totalHoras = horasComplementaresRepository.GetTotalHorasComplementaresAluno(alunoId);
+        String horasCurso = curso_alunoRepository.GetHorasCursoAluno(alunoId);
+        TextView complete = (TextView) rootview.findViewById(R.id.txtFinal);
+
+        if(totalHoras == null ||  totalHoras == 0){
+
+        }else{
+            if(totalHoras >= Integer.parseInt(horasCurso)){
+                fab.setVisibility(View.GONE);
+                complete.setVisibility(View.VISIBLE);
+                complete.setText("Você já completou todas as suas horas comeplementares!");
+            }
+        }
 
 
         List<ChamadoModel> chamados = chamadoRepository.ListarChamadosAluno(alunoId);
@@ -63,31 +81,29 @@ public class Requests extends Fragment {
         ArrayList<ChamadoModel> chamadoModelArrayList = new ArrayList<>();
         for(int i=0;i<l;i++){
             ids [i] = chamados.get(i).getId();
-            titulos[i] = chamados.get(i).getTitulo();
+            titulos[i] = chamados.get(i).getTitulo() + " - " + chamados.get(i).getStatus();
             data[i] = chamados.get(i).getData_envio();
             ChamadoModel request = new ChamadoModel();
             request.setTitulo(chamados.get(i).getTitulo());
             request.setData_envio(chamados.get(i).getData_envio());
             chamadoModelArrayList.add(request);
         }
-        String[] nomes2 = {"A", "B", "C"};
 
-        //EventAdapter listAdapter = new EventAdapter((MainActivity) getContext(), eventModelArrayList);
         lv =  rootview.findViewById(R.id.listView);
         adapter = new ArrayAdapter<String>(getActivity(), R.layout.requestitem, R.id.text_view, titulos);
         lv.setAdapter(adapter);
 
 
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(rootview.getContext(), EventActivity.class);
-                int id_chamado = ids[i];
-                intent.putExtra("CHAMADO_ID", id_chamado);
-                startActivity(intent);
-                listener.itemClicked(i);
-            }
-        });
+//        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Intent intent = new Intent(rootview.getContext(), EventActivity.class);
+//                int id_chamado = ids[i];
+//                intent.putExtra("CHAMADO_ID", id_chamado);
+//                startActivity(intent);
+//                listener.itemClicked(i);
+//            }
+//        });
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

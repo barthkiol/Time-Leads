@@ -25,10 +25,9 @@ import java.util.List;
 import TimeLeads.model.EventModel;
 import TimeLeads.repository.EventRepository;
 
-public class Events extends Fragment {
+public class EventsCoordenador extends Fragment {
 
     ListView lv;
-    SearchView searchView;
     View rootview;
     ArrayAdapter<String> adapter;
     FloatingActionButton fab;
@@ -39,7 +38,6 @@ public class Events extends Fragment {
 
     Integer [] ids;
     private Listener listener;
-    TextView txt;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -50,39 +48,24 @@ public class Events extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootview =  inflater.inflate(R.layout.events,container, false);
+        rootview =  inflater.inflate(R.layout.events_fragment,container, false);
 
-        int idAlunoLogado = (int) getActivity().getIntent().getIntExtra("ALUNO_ID", 0);
+        int idCoordenadorLogado = (int) getActivity().getIntent().getIntExtra("COORDENADOR_ID", 0);
         fab = rootview.findViewById(R.id.fab);
-        if(idAlunoLogado != 0){
-            fab.setVisibility(View.GONE);
-        }
 
-        EventRepository eventRepository = new EventRepository(((MainActivity) getContext()));
+
+        EventRepository eventRepository = new EventRepository(((MainActivityCoordenador) getContext()));
         List<EventModel> eventos = eventRepository.ListarEventos();
         int l = eventos.size();
         String [] titulos = new String[l];
-        String [] data = new String[l];
-        int imageId = R.drawable.calendar;
         ids =  new Integer[l];
-        ArrayList<EventModel> eventModelArrayList = new ArrayList<>();
         for(int i=0;i<l;i++){
             ids [i] = eventos.get(i).getId();
             titulos[i] = eventos.get(i).getTitulo();
-            data[i] = eventos.get(i).getData();
-            EventModel event = new EventModel();
-            event.setImagem(String.valueOf(imageId));
-            event.setTitulo(eventos.get(i).getTitulo());
-            event.setData(eventos.get(i).getData());
-            event.setHoras_validas(eventos.get(i).getHoras_validas());
-            event.setDescricao(eventos.get(i).getDescricao());
-            event.setId(eventos.get(i).getId());
-            eventModelArrayList.add(event);
-        }
-        String[] nomes2 = {"A", "B", "C"};
 
-        //EventAdapter listAdapter = new EventAdapter((MainActivity) getContext(), eventModelArrayList);
-        lv =  rootview.findViewById(R.id.listView);
+        }
+
+        lv =  rootview.findViewById(R.id.listViewEventCord);
         adapter = new ArrayAdapter<String>(getActivity(), R.layout.eventitem, R.id.text_view, titulos);
         lv.setAdapter(adapter);
 
@@ -98,6 +81,13 @@ public class Events extends Fragment {
             }
         });
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(rootview.getContext(), SalvarEvento.class);
+                startActivity(intent);
+            }
+        });
 
 
         return rootview;

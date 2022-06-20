@@ -11,8 +11,8 @@
         android:textColor="@android:color/black"
         android:textSize="30sp"
         android:text="Evento 1"
-        android:backgroundTint="#C2C2C2"
-        android:background="#C2C2C2"/>
+        android:backgroundTint="#A2C2C2C2"
+        android:background="#A2C2C2C2"/>
 
 
 

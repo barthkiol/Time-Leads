@@ -12,7 +12,9 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -51,6 +53,8 @@ public class SalvarEvento extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salvar_evento);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.GRAY));
+
 
         init();
         btnimg.setOnClickListener(new View.OnClickListener() {

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@android:color/transparent"
     android:padding="15dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
 
 
@@ -18,46 +18,33 @@
             tools:ignore="MissingConstraints">
 
             <!-- Media -->
-            <ImageView
-                android:id="@+id/img1"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:contentDescription="Descrição da imagem"
-                android:scaleType="centerCrop"
-
-                app:srcCompat="@drawable/calendar" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="398dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:background="#B7CCCCCC"
+                android:backgroundTint="#CCCCCC"
+                android:orientation="horizontal"
                 android:padding="16dp">
 
                 <!-- Title, secondary and supporting text -->
                 <TextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/nomeAlunoList"
+                    android:layout_width="170dp"
                     android:layout_height="wrap_content"
-                    android:text="Titulo do evento"
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
+                    android:text="Nome do aluno"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/data"
+                    android:id="@+id/horasAlunoList"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="20/06/2022 - 20/12/2022"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary" />
-
-                <TextView
-                    android:id="@+id/descLong1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod elit magna, id condimentum sem fermentum ut. Praesent viverra egestas neque, ac facilisis nisi sollicitudin tempus. Cras facilisis at ligula quis interdum. Nulla porta nec ex et condimentum. Cras sit amet commodo erat. Aenean sit amet molestie nisi, nec dictum nisl. Sed dignissim libero augue, nec bibendum mauris facilisis eu."
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary" />
+                    android:layout_gravity="end"
+                    android:layout_marginLeft="50dp"
+                    android:text="Horas do aluno"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
@@ -66,4 +53,4 @@
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
