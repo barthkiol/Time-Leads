@@ -94,8 +94,8 @@ public class ChamadoRepository {
 
         ArrayList chamados = new ArrayList();
         StringBuilder stringBuilderListChamado = new StringBuilder();
-        stringBuilderListChamado.append("Select * from CHAMADO where aluno_id = " + aluno);
-        stringBuilderListChamado.append(" AND CHAMADO.status like 'RECUSADO' OR CHAMADO.status like 'ABERTO' order by id_chamado");
+        stringBuilderListChamado.append("Select * from CHAMADO where (aluno_id = " + aluno + " ) ");
+        stringBuilderListChamado.append(" AND (CHAMADO.status like 'RECUSADO' OR CHAMADO.status like 'ABERTO') order by id_chamado");
 
         Cursor cursor = databaseUtil.GetConexaoDataBase().rawQuery(stringBuilderListChamado.toString(), null);
         cursor.moveToFirst();

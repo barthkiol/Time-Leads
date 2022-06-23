@@ -30,6 +30,7 @@ public class RequestsCoordenador extends Fragment {
     View rootview;
     ArrayAdapter<String> adapter;
     private Listener listener;
+    FloatingActionButton fab;
 
     static interface Listener{
         void itemClicked(int id);
@@ -49,10 +50,14 @@ public class RequestsCoordenador extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootview =  inflater.inflate(R.layout.events,container, false);
+        rootview =  inflater.inflate(R.layout.requests,container, false);
         ChamadoRepository chamadoRepository = new ChamadoRepository(((MainActivityCoordenador) getContext()));
         int idCoordenadorLogado = (int) getActivity().getIntent().getIntExtra("COORDENADOR_ID", 0);
+        fab = rootview.findViewById(R.id.fab);
 
+        if(idCoordenadorLogado != 0){
+            fab.setVisibility(View.GONE);
+        }
 
 
         List<ChamadoModel> chamados = chamadoRepository.ListarChamadosAbertos();
