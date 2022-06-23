@@ -21,11 +21,15 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
 import TimeLeads.model.AlunoModel;
+import TimeLeads.model.CursoModel;
+import TimeLeads.model.Curso_AlunoModel;
 import TimeLeads.repository.AlunoRepository;
+import TimeLeads.repository.CursoRepository;
+import TimeLeads.repository.Curso_AlunoRepository;
 
 public class Profile extends Fragment {
 
-    TextView nome, email, matricula, cpf, data;
+    TextView nome, email, matricula, cpf, data, curso;
     ImageView picture;
     @Nullable
     @Override
@@ -34,7 +38,11 @@ public class Profile extends Fragment {
         int idAlunoLogado = (int) getActivity().getIntent().getIntExtra("ALUNO_ID", 0);
         AlunoRepository alunoRepository = new AlunoRepository(((MainActivity) getContext()));
         AlunoModel aluno = alunoRepository.GetAluno(idAlunoLogado);
+        Curso_AlunoRepository cursoRepository = new Curso_AlunoRepository((MainActivity) getContext());
+        Curso_AlunoModel cursoModel = cursoRepository.GetCurso_Aluno(idAlunoLogado);
+        CursoModel cursoAluno = new CursoRepository((MainActivity) getContext()).GetCurso(cursoModel.getCurso_id());
 
+        curso = (TextView) rootview.findViewById(R.id.cursoAluno);
         nome = (TextView) rootview.findViewById(R.id.nomeAluno);
         email = (TextView) rootview.findViewById(R.id.emailAluno);
         matricula = (TextView) rootview.findViewById(R.id.matriculaAluno);
@@ -44,9 +52,10 @@ public class Profile extends Fragment {
 
         nome.setText(aluno.getNome());
         email.setText(aluno.getEmail());
-        matricula.setText(aluno.getMatricula());
-        cpf.setText(aluno.getCPF());
-        data.setText(aluno.getData_nasc());
+        matricula.setText("Matricula: " + aluno.getMatricula());
+        cpf.setText("CPF: " + aluno.getCPF());
+        data.setText("Data Nasc.: " + aluno.getData_nasc());
+        curso.setText(cursoAluno.getNome() + " " + cursoModel.getPeriodo() + "º Período");
         picture.setImageBitmap(StringToBitMap(aluno.getFoto()));
 
         /*

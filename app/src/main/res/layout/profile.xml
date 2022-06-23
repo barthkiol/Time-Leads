@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:text="Email do aluno"
         android:textColor="@color/black"
-        android:textAlignment="center"
+        android:layout_marginHorizontal="30dp"
         android:textAppearance="?attr/textAppearanceHeadline6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,10 +42,9 @@
         android:id="@+id/nomeAluno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
         android:text="Nome do aluno"
         android:textColor="@color/black"
-
-        android:textAlignment="center"
         android:textAppearance="?attr/textAppearanceHeadline6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,20 +55,53 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/matriculaAluno"
+        android:id="@+id/cursoAluno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Número da matricula do aluno"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-
+        android:layout_marginHorizontal="30dp"
         android:textAppearance="?attr/textAppearanceHeadline6"
+
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fotoAluno"
-        app:layout_constraintVertical_bias="0.407"
+        app:layout_constraintVertical_bias="0.438"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/matriculaAluno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Número da matricula do aluno"
+        android:layout_marginHorizontal="30dp"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fotoAluno"
+        app:layout_constraintVertical_bias="0.584"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/dataNasceAluno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:text="Data de nascimento do aluno"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fotoAluno"
+        app:layout_constraintVertical_bias="0.881"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -77,33 +109,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="CPF do aluno"
-        android:textColor="@color/black"
+        android:layout_marginHorizontal="30dp"
 
-        android:textAlignment="center"
         android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fotoAluno"
-        app:layout_constraintVertical_bias="0.553"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/dataNasceAluno"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-
-        android:text="Data de nascimento do aluno"
-        android:textAlignment="center"
-        android:textAppearance="?attr/textAppearanceHeadline6"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fotoAluno"
-        app:layout_constraintVertical_bias="0.703"
+        app:layout_constraintVertical_bias="0.73"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -49,8 +49,9 @@
 
     <ImageView
         android:id="@+id/requestArquivo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_gravity="center"
         tools:srcCompat="@tools:sample/avatars" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

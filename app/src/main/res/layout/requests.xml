@@ -29,9 +29,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="2dp"
-        android:divider="@color/black"
+        android:divider="@color/white"
         android:dividerHeight="2px"
-        android:outlineAmbientShadowColor="@color/black"
+        android:outlineAmbientShadowColor="@color/white"
         tools:listitem="@layout/requestitem">
 
 

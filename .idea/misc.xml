@@ -5,13 +5,13 @@
       <map>
         <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/drawable/clock.xml" value="0.1" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/activity_criar_aluno.xml" value="0.1" />
-        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/activity_criar_chamado.xml" value="0.1" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/activity_criar_chamado.xml" value="0.15" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/activity_event.xml" value="0.14" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/activity_linha_consultar_eventos.xml" value="0.25" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/activity_main_coordenador.xml" value="0.16203703703703703" />
-        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/activity_request.xml" value="0.18" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/activity_request.xml" value="0.15" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/activity_salvar_evento.xml" value="0.1" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/activity_splash.xml" value="0.18" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/TimeLeads/app/src/main/res/layout/activity_st_events.xml" value="0.18802083333333333" />

@@ -82,6 +82,8 @@ public class SalvarEvento extends AppCompatActivity {
                 evento.setImagem(fotoemString);
                 EventRepository repo = new EventRepository(SalvarEvento.this);
                 repo.salvar(evento);
+                finish();
+                Toast.makeText(SalvarEvento.this, "Evento criado com sucesso!", Toast.LENGTH_SHORT).show();
             }
 
         });
